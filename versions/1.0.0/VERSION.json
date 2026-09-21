@@ -1,0 +1,6 @@
+{
+  "version": "1.0.0",
+  "source_commit": "7d46bfd",
+  "preserved_files": ["haystack_cajal.py", "README.md"],
+  "preservation_note": "Exact source files from the repository baseline before the 2.0.0 implementation refresh."
+}
