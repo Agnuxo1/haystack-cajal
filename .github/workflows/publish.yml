@@ -38,5 +38,9 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           TAG: ${{ inputs.tag || github.ref_name }}
         run: |
-          gh release create "$TAG" dist/* --repo "$GITHUB_REPOSITORY" \
-            --verify-tag --title "haystack-cajal ${TAG}" --generate-notes
+          if gh release view "$TAG" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            gh release upload "$TAG" dist/* --repo "$GITHUB_REPOSITORY" --clobber
+          else
+            gh release create "$TAG" dist/* --repo "$GITHUB_REPOSITORY" \
+              --verify-tag --title "haystack-cajal ${TAG}" --generate-notes
+          fi
