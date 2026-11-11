@@ -7,6 +7,10 @@ This package provides two deliberately small components:
 - `CAJALPaperGenerator` turns a topic and section list into prompts and delegates generation to an injected callable or a lazily loaded Hugging Face Transformers pipeline.
 - `CAJALPaperReviewer` applies a deterministic editorial rubric to supplied text. It reports reasons and requires human review; it does not simulate reviewers or manufacture scientific consensus.
 
+<!-- impact-note:start -->
+<sub><strong>Efficiency and practical value.</strong> The small Haystack components separate generation from deterministic editorial checks and load model machinery only when required. An injected callable supports repeatable component tests without repeatedly invoking a large model, while reusable section prompts reduce integration work. The <a href="#haystack-pipeline-example">documented pipeline</a> makes this separation explicit; editorial scores remain triage signals that require human review.</sub>
+<!-- impact-note:end -->
+
 ## Install
 
 ```bash
